@@ -1,0 +1,68 @@
+# 项目相关配置
+project:
+  name: leopard-java
+  application: vgs
+  version: 1.0
+  unpackTime: 2022-07-14
+  PIC: wangxiaolong
+  vcs:
+  framework: spring
+# 服务配置
+server:
+  servlet:
+    # 项目路径
+    context-path: /leopard
+  # 端口号
+  port: 8888
+  tomcat:
+    basedir: /tomcat
+    # 接口请求日志配置
+    accesslog:
+      enabled: true
+      buffered: true
+      directory: ./leopard/logs
+      file-date-format: _yyyy-MM-dd
+      pattern: '%h %t "%r" %s %b %D %I "%{X-Forwarded-For}i" "%{User-Agent}i" "%{Referer}i" "%{X-Real-IP}i"'
+      prefix: ${project.name}_accesslog
+      rename-on-rotate: false
+      request-attributes-enabled: false
+      rotate: true
+      suffix: .log
+spring:
+  application:
+    name: leopard
+  # mysql数据库配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/sherlon
+    username: root
+    password: root123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+  # jpa 配置
+  jpa:
+    database: mysql
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 500
+          batch_versioned_data: true
+        order_inserts: true
+        order_updates: true
+        show_sql: true
+        format_sql: false
+  # mongodb 配置
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/sherlon
