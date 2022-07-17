@@ -1,10 +1,10 @@
-package com.imxiaolong.leopard;
+package com.imxiaolong.leopard.leopardbackend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LeopardApplicationTests {
+class LeopardBackendApplicationTests {
 
     @Test
     void contextLoads() {

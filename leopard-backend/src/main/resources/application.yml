@@ -1,17 +1,15 @@
 # 项目相关配置
 project:
-  name: leopard-java
-  application: vgs
+  name: leopard-backend
   version: 1.0
-  unpackTime: 2022-07-14
   PIC: wangxiaolong
-  vcs:
+  vcs: https://github.com/sherlonWang/leopard.git
   framework: spring
 # 服务配置
 server:
   servlet:
     # 项目路径
-    context-path: /leopard
+    context-path: /leopard-backend
   # 端口号
   port: 8888
   tomcat:
@@ -20,7 +18,7 @@ server:
     accesslog:
       enabled: true
       buffered: true
-      directory: ./leopard/logs
+      directory: ./leopard/logs/accesslog/leopard-backend
       file-date-format: _yyyy-MM-dd
       pattern: '%h %t "%r" %s %b %D %I "%{X-Forwarded-For}i" "%{User-Agent}i" "%{Referer}i" "%{X-Real-IP}i"'
       prefix: ${project.name}_accesslog
@@ -66,3 +64,10 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/sherlon
+# 自定义参数
+leopard:
+  user:
+    name: wxl
+    age: 28
+    sex: 男
+    myname: ${leopard.user.name}
